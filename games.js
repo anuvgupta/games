@@ -9,7 +9,6 @@ const express = require("express");
 const rn = require('random-number');
 const readline = require("readline");
 const body_parser = require("body-parser");
-const { json } = require('body-parser');
 
 /* ENVIRONMENT */
 global.args = process.argv.slice(2);
