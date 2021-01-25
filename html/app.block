@@ -1,0 +1,87 @@
+    *
+
+// app main blockfile
+
+// app UI layer
+app
+    id app
+    css
+        opacity 0
+        transition opacity 0.4s
+        width 100%
+        height 100%
+        margin 0 auto
+        box-sizing border-box
+        position absolute
+        top 0
+        left 0
+        overflow-y auto
+        overflow-x hide
+
+    div background
+        css
+            position fixed
+            top 0
+            left 0
+            width 100%
+            height 100%
+            box-sizing border-box
+            margin 0
+            padding 0
+            background-image url(img/bg3.jpg)
+            background-position top right
+            background-size auto
+            background-repeat repeat
+            background-attachment fixed
+            opacity 0.035
+            z-index -1
+    
+    div dl-mgr
+        css
+            display none
+        a dl-lnk
+            target _blank
+            href #
+            text text
+                val dl-lnk
+
+    div main
+        css
+            height 100%
+            width 100%
+            max-width 850px
+            margin 0 auto
+        block title
+            css
+                height 460px
+            div icon
+                image image
+                    src img/game_w.png
+                    height 210px
+                    width 210px
+                css
+                    height 210px
+                    width 210px
+                    margin 0 auto
+                    margin-top -15px
+            text text
+                val Games
+                class noselect
+                css
+                    font-size 75px
+                    color white
+                    letter-spacing 1px
+                    font-weight 300
+                    cursor default
+                    //text-transform lowercase
+                    margin-top -35px
+                    display block
+        game-section web
+            title HTML5 Game Projects
+        game-section java
+            title Java Game Projects
+        game-section flash
+            title Flash Game Archive
+        div spacer
+            css
+                height 100px

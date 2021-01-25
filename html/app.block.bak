@@ -1,0 +1,228 @@
+    *
+
+// app main blockfile
+
+// app UI layer
+app
+    id app
+    css
+        opacity 0
+        transition opacity 0.4s
+        width 100%
+        height 100%
+        margin 0 auto
+        box-sizing border-box
+        position absolute
+        top 0
+        left 0
+        overflow-y auto
+        overflow-x hide
+
+    div background
+        css
+            position fixed
+            top 0
+            left 0
+            width 100%
+            height 100%
+            box-sizing border-box
+            margin 0
+            padding 0
+            background-image url(img/bg3.jpg)
+            background-position top right
+            background-size auto
+            background-repeat repeat
+            background-attachment fixed
+            opacity 0.035
+            z-index -1
+    
+    div dl-mgr
+        css
+            display none
+        a dl-lnk
+            target _blank
+            href #
+            text text
+                val dl-lnk
+
+    div main
+        css
+            height 100%
+            width 100%
+            max-width 850px
+            margin 0 auto
+        block title
+            css
+                height 460px
+            div icon
+                image image
+                    src img/game_w.png
+                    height 210px
+                    width 210px
+                css
+                    height 210px
+                    width 210px
+                    margin 0 auto
+                    margin-top -15px
+            text text
+                val Games
+                class noselect
+                css
+                    font-size 75px
+                    color white
+                    letter-spacing 1px
+                    font-weight 300
+                    cursor default
+                    //text-transform lowercase
+                    margin-top -35px
+                    display block
+        game-section section1
+            title HTML5 Game Projects
+            game-item rubbr
+                name rubbr
+                img rubbr.png
+                link https://rubbr.ml
+                desc Crash cars, collect cash, and race to the top of the leaderboard—realtime multiplayer agar.io-like car racing video game. Built with HTML5 Canvas & Node.js. 2016.
+                alt-links https://github.com/anuvgupta/rubbr https://rubbr.anuv.me https://pjs.rubbr.ml http://io.rubbr.ml
+                controls
+                    `
+                        Move mouse to change car direction and speed; car follows mouse.
+                        Collect $1 bills around the map, or + health packs when health bar is low.
+                        Press space to nitro boost car for $20, or drive through green hexagon nitro gates for free boost.
+                        Drive into other cars while boosting to steal money and gain kills!
+                    `
+            game-item monarchy
+                name monarchy
+                img monarchy.png
+                link https://monarchy.anuv.me
+                desc Catch butterflies, steal points, and fight for the top five—realtime multiplayer Hasbro-Elefun-like butterfly catching video game. Built with HTML5 Canvas & Node.js. 2020.
+                alt-links https://github.com/anuvgupta/monarchy
+                preview-pos center left
+                controls
+                    `
+                        Hold down left and right arrow keys to move net.
+                        Press space to jump, again in mid-air to double-jump, again to triple-jump.
+                        Collect butterflies with net for points, or fall on other players to steal points.
+                    `
+            game-item chessroom
+                name chessroom
+                img chessroom.png
+                link https://chessroom.anuv.me
+                desc Realtime multiplayer chess room with spectation. Built with chess.js & Firebase. 2016.
+                alt-links https://github.com/anuvgupta/chessroom
+                controls
+                    `
+                        Hit "new game" to start a game.
+                        Send other player current URL containing game ID, they can visit URL or enter game ID to join.
+                        Spectators can join after the second player in the same way.
+                    `
+        game-section section2
+            title Java Game Projects
+            // minigames (catch apples, space invaders, hangman, madlibs, pinball)
+            game-item murk
+                name murk
+                img murk.png
+                link jar://murk
+                desc Console/text-based fantasy mini-RPG with minigames. Made with Java for SFHS CS. 2016.
+                alt-links https://github.com/anuvgupta/murk
+                controls
+                    `
+                        Download jar file and run in terminal/command prompt: `java -jar murk.jar`.
+                        Play game in the terminal window.
+                        Before starting minigame, click pop-up window, then use the keyboard.
+                        Saving the game is not possible, so do not close the window.
+                        Requires Java 8.
+                    `
+            game-item sitarhero
+                name sitar hero
+                img sitarhero.png
+                link jar://sitarhero
+                desc Guitar-hero style 3-song music game using MIDI Sitar. Made with Java for SFHS CS. 2016.
+                alt-links https://github.com/anuvgupta/sitarhero
+                controls
+                    `
+                        Download jar file and double click to open. Alternatively, run in terminal/command prompt: `java -jar sitarhero.jar`.
+                        Use ASDFGH as six sitar strings/keyboard notes from left to right. Hit the notes when they enter the black box.
+                        Saving the game is not possible, so do not close the window.
+                        Requires Java 8.
+                    `
+            game-item worldcup
+                name world cup
+                img worldcup.png
+                link jar://worldcup
+                desc Simulation of "world cup" soccer practice minigame. Made with Java for SFHS CS. 2016.
+                alt-links https://github.com/chern/JWorldCup
+                controls
+                    `
+                        Download jar file and double click to open. Alternatively, to see log output, run in terminal/command prompt: `java -jar worldcup.jar`.
+                        Adjust speed and # players with control panel. Game can be saved to/loaded from a file "worldcup.csv" in same folder as "worldcup.jar".
+                        Requires Java 8.
+                    `
+            game-item spaceinvaders
+                name space invaders
+                img spaceinvaders.png
+                link jar://spaceinvaders
+                desc Rudimentary space-invaders-style minigame. Made with Java for ID Tech @ Stanford. 2012.
+                alt-links https://github.com/anuvgupta/spaceinvaders
+                controls
+                    `
+                        Download jar file and double click to open. Alternatively, to see log output, run in terminal/command prompt: `java -jar spaceinvaders.jar`.
+                        Use left/right arrow keys to move and space to shoot. Move the main window to the side to see the scores/lives window.
+                        Requires Java 8.
+                    `
+            game-item catchapples
+                name catch the apples
+                img catchapples.png
+                link jar://catchapples
+                desc Rudimentary item-catching minigame. Made with Java for ID Tech @ Stanford. 2012.
+                alt-links https://github.com/anuvgupta/catchapples
+                controls
+                    `
+                        Download jar file and double click to open. Alternatively, to see log output, run in terminal/command prompt: `java -jar catchapples.jar`.
+                        Use left/right arrow keys to move and collect apples. Requires Java 8.
+                    `
+        game-section section3
+            title Flash Game Archive
+            game-item supersmash
+                name super smash
+                img supersmash.png
+                link flash://supersmash
+                desc Rough remake of Super Smash Bros Melee.
+                alt-links https://supersmashflash.com/play/ssf1
+                controls
+                    `
+                        Click link above to play in browser.
+                        P1: arrow keys to move, "o" to jump, "p" to attack.
+                        P2: "a/s/d/w" to move, "g" to jump, "f" to attack.
+                        Backspace to pause.
+                    `
+            game-item chaosfaction2
+                name chaos faction 2
+                img chaosfaction2.png
+                link flash://chaosfaction2
+                desc Rough re
+            game-item motherload
+                name motherload
+                img motherload.png
+                link flash://motherload
+                desc Use your digger to excavate as much ore as possible. Use the money you earn to upgrade your digger and move deeper underground, to unearth the mysteries from below.
+                alt-links https://miniclip.com/games/motherload
+                controls Click link above to play in browser. Use arrow keys to move, fly, and dig.
+            game-item bloxorz
+                name bloxorz
+                img bloxorz.png
+                link flash://bloxorz
+                desc Get the block to fall into the square hole to progress to the next level...
+                alt-links https://miniclip.com/games/bloxorz-classic
+                controls Click link above to play in browser. Use arrow keys to move the block.
+                preview-pos left
+            game-item streetfight
+                name street fight
+                img streetfight.png
+                link flash://streetfight
+                desc Obama and Hillary fight it out in hand-to-hand combat.
+                alt-links https://miniclip.com/games/street-fight
+                controls Click link above to play in browser. Use arrow keys to move, jump, and crouch. Then, use WASD keys: W=Bonus, A=Punch, S=Smack, D=Kick, and T=Taunt.
+        div spacer
+            css
+                height 100px

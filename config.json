@@ -1,0 +1,203 @@
+{
+    "http_port": 3018,
+    "github_user": "anuvgupta",
+    "games": {
+        "web": {
+            "__type": null,
+            "__sort": ["rubbr", "monarchy", "chessroom"],
+            "rubbr": {
+                "title": "Rubbr",
+                "link": "__pl_web-https://rubbr.ml",
+                "desc": "Crash cars, collect cash, and race to the top of the leaderboard—realtime multiplayer agar.io-like car racing video game. Built with HTML5 Canvas & Node.js.",
+                "alt-links": [
+                    "__github",
+                    "https://rubbr.anuv.me",
+                    "https://rubbr.ml",
+                    "https://pjs.rubbr.ml",
+                    "http://io.rubbr.ml"
+                ],
+                "controls": "Multiplayer (online). Move mouse to change car direction and speed; car follows mouse. Collect $1 bills around the map, or + health packs when health bar is low. Press space to nitro boost car for $20, or drive through green hexagon nitro gates for free boost. Drive into other cars while boosting to steal money and gain kills!",
+                "controls-lh": "13.5px",
+                "year": 2016
+            },
+            "monarchy": {
+                "title": "Monarchy",
+                "link": "__pl_web-https://monarchy.anuv.me",
+                "desc": "Catch butterflies, steal points, and fight for the top five—realtime multiplayer Hasbro-Elefun-like butterfly catching video game. Built with HTML5 Canvas & Node.js.",
+                "alt-links": ["__github", "https://monarchy.anuv.me"],
+                "controls": "Multiplayer (online). Hold down left and right arrow keys to move net. Press space to jump, again in mid-air to double-jump, again to triple-jump. Collect butterflies with net for points, or fall on other players to steal points.",
+                "year": 2020,
+                "preview-pos": "center left"
+            },
+            "chessroom": {
+                "title": "Chessroom",
+                "link": "__pl_web-https://chessroom.anuv.me",
+                "desc": "Realtime multiplayer chess room with spectation. Built with chess.js & Firebase.",
+                "alt-links": ["__github", "https://chessroom.anuv.me"],
+                "controls": "Multiplayer (online). Hit \"new game\" to start a game. Send other player current URL containing game ID, they can visit URL or enter game ID to join. Spectators can join after the second player in the same way.",
+                "year": 2016
+            }
+        },
+        "flash": {
+            "__type": ".swf",
+            "__sort": [
+                "motherload",
+                "bloxorz",
+                "streetfight",
+                "chaosfaction",
+                "chaosfaction2",
+                "supersmash",
+                "supersmash2"
+            ],
+            "motherload": {
+                "title": "MotherLoad",
+                "link": "__pl_flash",
+                "desc": "Use your digger to excavate as much ore as possible. Use the money you earn to upgrade your digger and move deeper underground, to unearth the mysteries from below.",
+                "alt-links": ["__miniclip", "__dl_swf"],
+                "controls": "Singleplayer. Click link above to play in browser. Use arrow keys to move, fly, and dig.",
+                "year": 2004,
+                "height": 400,
+                "width": 550,
+                "size_mult": 1.4
+            },
+            "bloxorz": {
+                "title": "Bloxorz",
+                "link": "__pl_flash",
+                "desc": "Get the block to fall into the square hole to progress to the next level...",
+                "alt-links": ["__miniclip-classic", "__dl_swf"],
+                "controls": "Singleplayer. Click link above to play in browser. Use arrow keys to move the block.",
+                "year": 2007,
+                "preview-pos": "left",
+                "height": 300,
+                "width": 550,
+                "size_mult": 1.5
+            },
+            "streetfight": {
+                "title": "Street Fight",
+                "link": "__pl_flash",
+                "desc": "Obama and Hillary fight it out in hand-to-hand combat.",
+                "alt-links": [
+                    "https://miniclip.com/games/street-fight",
+                    "__dl_swf"
+                ],
+                "controls": "Singleplayer. Click link above to play in browser. Use arrow keys to move, jump, and crouch. Then, use WASD keys: W=Bonus, A=Punch, S=Smack, D=Kick, and T=Taunt.",
+                "year": 2008,
+                "height": 433,
+                "width": 590,
+                "size_mult": 1.4
+            },
+            "supersmash": {
+                "title": "Super Smash",
+                "link": "__pl_flash",
+                "desc": "Rough remake of Super Smash Bros Melee.",
+                "alt-links": [
+                    "https://supersmashflash.com/play/ssf1",
+                    "__dl_swf"
+                ],
+                "controls": "Single & Multiplayer (offline). Click link above to play in browser. P1: arrow keys to move, \"o\" to jump, \"p\" to attack. P2: \"a/s/d/w\" to move, \"g\" to jump, \"f\" to attack. Backspace to pause.",
+                "year": 2006,
+                "height": 400,
+                "width": 700,
+                "size_mult": 1.2
+            },
+            "supersmash2": {
+                "title": "Super Smash 2",
+                "link": "__pl_flash",
+                "desc": "Sequel to Super Smash flash—more polished, now with a full development team.",
+                "alt-links": [
+                    "https://supersmashflash.com/play/ssf2",
+                    "__dl_swf"
+                ],
+                "controls": "Single & Multiplayer (offline). Click link above to play in browser. Browser support may be limited. Further controls and instructions are explained in-game.",
+                "year": 2017,
+                "height": 400,
+                "width": 700,
+                "size_mult": 1.2
+            },
+            "chaosfaction": {
+                "title": "Chaos Faction",
+                "link": "__pl_flash",
+                "desc": "Fast-paced and intense arena fighting game.",
+                "alt-links": [
+                    "https://newgrounds.com/portal/view/335777",
+                    "__dl_swf"
+                ],
+                "controls": "Singleplayer. Click link above to play in browser. -LEFT: move left. -RIGHT: move right. -UP: jump. -DOWN: block. -Z: attack 1. -X: attack 2. Controls can be changed in settings menu. Play in campaign, deathmatch, or survival mode.",
+                "year": 2006,
+                "height": 600,
+                "width": 800,
+                "size_mult": 1.2
+            },
+            "chaosfaction2": {
+                "title": "Chaos Faction 2",
+                "link": "__pl_flash",
+                "desc": "Sequel to Chaos Faction. Battle through 15 new campaign levels w/ new weapons, characters, moves, and more explosions than you can shake a stick of dynamite at.",
+                "alt-links": [
+                    "https://newgrounds.com/portal/view/535370",
+                    "__dl_swf"
+                ],
+                "controls": "Singleplayer & multiplayer (offline). Click link above to play in browser. -Left: move left. -Right: move right. -Up: jump/double jump. -Down: shield/stomp. -Z: attack 1. -X: attack 2. -Shift: hold w/ weapon to melee attack. -D: drop weapon. -Spacebar: pause. Advanced controls in-game. Controls can be changed in settings menu.",
+                "controls-lh": "13.5px",
+                "year": 2010,
+                "height": 600,
+                "width": 800,
+                "size_mult": 1.2
+            }
+        },
+        "java": {
+            "__type": ".jar",
+            "__sort": [
+                "murk",
+                "sitarhero",
+                "worldcup",
+                "spaceinvaders",
+                "catchapples"
+            ],
+            "murk": {
+                "title": "Murk",
+                "desc": "Console/text-based fantasy RPG with minigames. Made w/ Java for SFHS CS.",
+                "alt-links": ["__github", "__dl_jar"],
+                "controls": "Singleplayer. Download jar file and run in terminal/command prompt: `java -jar murk.jar`. Play game in the terminal window. Before starting minigame, click pop-up window, then use the keyboard. Saving the game is not possible, so do not close the window. Requires Java 8.",
+                "controls-lh": "14px",
+                "year": 2016
+            },
+            "sitarhero": {
+                "title": "Sitar Hero",
+                "desc": "Guitar-hero style 3-song music game w/ MIDI Sitar. Made w/ Java for SFHS CS.",
+                "alt-links": ["__github", "__dl_jar"],
+                "controls": "Singleplayer. Download jar file and double click to open. Alternatively, run in terminal/command prompt: `java -jar sitarhero.jar`. Use ASDFGH as six sitar strings/keyboard notes from left to right. Hit the notes when they enter the black box. Saving the game is not possible, so do not close the window. Requires Java 8.",
+                "year": 2016,
+                "height": 400,
+                "width": 562,
+                "controls-lh": "14px",
+                "size_mult": 1.4
+            },
+            "worldcup": {
+                "title": "World Cup",
+                "desc": "Simulation of \"world cup\" soccer practice minigame. Made w/ Java for SFHS CS.",
+                "alt-links": ["https://github.com/chern/JWorldCup", "__dl_jar"],
+                "controls": "Singleplayer. Download jar file and double click to open. Alternatively, to see log output, run in terminal/command prompt: `java -jar worldcup.jar`. Adjust speed and # players with control panel. Game can be saved to/loaded from a file \"worldcup.csv\" in same folder as \"worldcup.jar\". Requires Java 8.",
+                "year": 2016,
+                "height": 500,
+                "width": 500,
+                "controls-lh": "14px",
+                "size_mult": 1.4
+            },
+            "spaceinvaders": {
+                "title": "Space Invaders",
+                "desc": "Rudimentary space-invaders-style minigame. Made w/ Java for ID Tech @ Stanford.",
+                "alt-links": ["__github", "__dl_jar"],
+                "controls": "Singleplayer. Download jar file and double click to open. Alternatively, to see log output, run in terminal/command prompt: `java -jar spaceinvaders.jar`. Use left/right arrow keys to move and space to shoot. Move the main window to the side to see the scores/lives window. Requires Java 8.",
+                "controls-lh": "14px",
+                "year": 2012
+            },
+            "catchapples": {
+                "title": "Catch the Apples",
+                "desc": "Rudimentary item-catching minigame. Made w/ Java for ID Tech @ Stanford.",
+                "alt-links": ["__github", "__dl_jar"],
+                "controls": "Singleplayer. Download jar file and double click to open. Alternatively, to see log output, run in terminal/command prompt: `java -jar catchapples.jar`. Use left/right arrow keys to move and collect apples. Requires Java 8.",
+                "year": 2012
+            }
+        }
+    }
+}

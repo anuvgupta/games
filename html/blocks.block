@@ -1,0 +1,518 @@
+    *
+
+// app blocks blockfile
+
+// custom blocks
+!break
+    init
+        {
+            return Block('span').add('br');
+        }
+    load
+        {
+            data('val', val => {
+                for (var i = 1; i < val; i++)
+                    block.add('br');
+            });
+        }
+!text
+    init
+        {
+            return Block('span');
+        }
+    load
+        {
+            data('val', val => {
+                block.node().appendChild(document.createTextNode(val));
+            });
+            data('html', html => {
+                block.html(html);
+            });
+        }
+!image
+    init
+        {
+            return Block('div');
+        }
+    load
+        {
+            var src = data('src');
+            var height = data('height');
+            var width = data('width');
+            var alt = data('alt');
+            if (src != null) {
+                block.css('background-image', "url('" + src + "')")
+                    .css('background-repeat', 'no-repeat')
+                    .css('background-size', 'contain')
+                ;
+            }
+            if (height !== null) block.css('height', height);
+            if (width !== null) block.css('width', width);
+            if (alt !== null) block.attribute('title', alt);
+        }
+!switch
+    init
+        {
+            var block;
+            block = Block('div')
+                .key('state', false)
+                .css({
+                    width: 'auto',
+                    height: '30px',
+                    cursor: 'pointer',
+                    margin: '5px 10px',
+                    fontSize: '17px'
+                })
+                .add(Block('block', 'label')
+                    .css({
+                        width: 'auto',
+                        minWidth: '70px',
+                        float: 'left',
+                        marginRight: '10px',
+                        cursor: 'inherit',
+                        fontSize: 'inherit',
+                        display: 'none'
+                    })
+                    .__child('content')
+                        .css('text-align', 'left')
+                        .__parent()
+                    .add(Block('text', 1)
+                        .data('Label 1: ')
+                    )
+                    .on('click', (e, b, d) => {
+                        if (block.key('enabled')) {
+                            block.key('state', (!block.key('state')));
+                            block.on('modified');
+                        }
+                    })
+                )
+                .add(Block('div', 'main')
+                    .css({
+                        width: '65px',
+                        height: '100%',
+                        position: 'relative',
+                        cursor: 'inherit',
+                        display: 'inline-block'
+                    })
+                    .add(Block('div', 'bg')
+                        .css({
+                            width: '100%',
+                            height: '100%',
+                            borderRadius: '16px',
+                            backgroundColor: '#e4e4e4',
+                            position: 'absolute',
+                            top: '0',
+                            left: '0',
+                            zIndex: '1',
+                            transition: 'background-color 0.2s ease-in-out'
+                        })
+                    )
+                    .add(Block('block', 'circle')
+                        .css({
+                            width: '30px',
+                            height: '100%',
+                            position: 'absolute',
+                            top: '0.5px',
+                            left: '1px',
+                            zIndex: '2',
+                            transition: 'left 0.2s ease-in-out'
+                        })
+                        .add(Block('div')
+                            .css({
+                                width: '75%',
+                                height: '75%',
+                                borderRadius: '100%',
+                                backgroundColor: 'white',
+                                margin: '0 auto'
+                            })
+                        )
+                    )
+                    .on('click', (e, b, d) => {
+                        if (block.key('enabled')) {
+                            block.key('state', (!block.key('state')));
+                            block.on('modified');
+                        }
+                    })
+                )
+                .on('updateUI', (e, b, d) => {
+                    if (block.key('state')) {
+                        block.child('main/circle').css({
+                            left: '34px'
+                        }).sibling('bg').css({
+                            backgroundColor: '#558fed'
+                        });
+                    } else {
+                        block.child('main/circle').css({
+                            left: '1px',
+                        }).sibling('bg').css({
+                            backgroundColor: '#e4e4e4'
+                        });
+                    }
+                })
+                .on('modified', (e, b, d) => {
+                    block.on('updateUI');
+                })
+                .key('enabled', true)
+                .on('enable', (e, b, d) => {
+                    block.key('enabled', true);
+                    block.css({
+                        opacity: '1',
+                        cursor: 'pointer'
+                    });
+                    e.stopPropagation();
+                })
+                .on('disable', (e, b, d) => {
+                    block.key('enabled', false);
+                    block.css({
+                        opacity: '0.6',
+                        cursor: 'default'
+                    });
+                    e.stopPropagation();
+                })
+            ;
+            return block;
+        }
+    load
+        {
+            data('val', (val) => {
+                var v = (val == 'on');
+                if (block.key('state') != v) {
+                    block.key('state', v);
+                    block.on('modified', { locked: true });
+                }
+            });
+            data('label', (label) => {
+                block.child('label/text').html('').data(label);
+                block.child('label').css('display', 'inline-table');
+            });
+        }
+
+!game-item
+    init
+        {
+            var block;
+            block = Block('div')
+                .css({
+                    width: '100%',
+                    height: '200px',
+                    minHeight: '200px',
+                    position: 'relative',
+                    boxSizing: 'border-box',
+                    borderTop: '1px solid #eee'
+                })
+                .key('$info', 'null')
+                .query('window height != 0', function (event, block, data) {
+                    block.css('height', '' + block.key('$info').outerHeight() + 'px');
+                })
+                .add(Block('block', 'preview')
+                    .css({
+                        position: 'absolute',
+                        top: '0',
+                        left: '0',
+                        width: '270px',
+                        zIndex: '2',
+                        opacity: '0.96',
+                        transition: 'opacity 0.15s ease'
+                    })
+                    .on('mouseover', (e, b, d) => {
+                        b.css('opacity', '1');
+                    })
+                    .on('mouseout', (e, b, d) => {
+                        b.css('opacity', '0.96');
+                    })
+                    .query('window height != 0', function (event, block, data) {
+                        block.css('height', '' + block.parent().key('$info').outerHeight() + 'px');
+                    })
+                    .query('window width < 685', function (event, block, data) {
+                        block.child('a/image').data({
+                            height: '100px',
+                            width: '145px'
+                        });
+                        block.css('width', '200px');
+                        block.sibling('info').css('padding-left', '205px');
+                    })
+                    .query('window width > 685', function (event, block, data) {
+                        block.child('a/image').data({
+                            height: '140px',
+                            width: '200px'
+                        });
+                        block.css('width', '270px');
+                        block.sibling('info').css('padding-left', '275px');
+                    })
+                    .add(Block('a', 1)
+                        .data({
+                            href: '#',
+                            target: '_blank'
+                        })
+                        .add(Block('image', 1)
+                            .data({
+                                src: 'img/game_bg_w.png',
+                                height: '140px',
+                                width: '200px'
+                            })
+                            .css({
+                                margin: '0 auto',
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                borderRadius: '5px',
+                                border: '0.5px solid #f9f9f9',
+                                cursor: 'pointer'
+                            })
+                        )
+                    )
+                )
+                .add(Block('div', 'info')
+                    .css({
+                        top: '0',
+                        left: '0',
+                        width: '100%',
+                        height: 'auto',
+                        minHeight: '200px',
+                        position: 'absolute',
+                        zIndex: '1',
+                        boxSizing: 'border-box',
+                        padding: '28px 25px 21px 275px',
+                        textAlign: 'left'
+                    })
+                    .add(Block('div', 'title')
+                        .css({
+                            fontSize: '29px',
+                            fontWeight: '500',
+                            letterSpacing: '1px',
+                            color: '#3a3a3a',
+                            display: 'inline-block',
+                            marginLeft: '-3.3px',
+                            textTransform: 'lowercase'
+                        })
+                        .add(Block('text', 1)
+                            .css('cursor', 'default')
+                            .data('Game Title')
+                        )
+                        .add(Block('text', 'txt_dash')
+                            .css({
+                                display: 'none',
+                                fontWeight: '100',
+                                cursor: 'default',
+                                fontSize: '22px'
+                            })
+                            .html('&nbsp;—&nbsp;')
+                        )
+                    )
+                    .add(Block('div', 'link')
+                        .css({
+                            fontSize: '19px',
+                            fontWeight: '300',
+                            color: '#3f3f3f',
+                            display: 'none'
+                        })
+                        .add(Block('a', 1)
+                            .data({
+                                href: '#',
+                                target: '_blank'
+                            })
+                            .add(Block('text', 1)
+                                .data('http://game.link.com')
+                            )
+                        )
+                    )
+                    .add(Block('div', 'desc')
+                        .css({
+                            fontSize: '15px',
+                            fontWeight: '100',
+                            color: '#444',
+                            display: 'none',
+                            marginBottom: '4px',
+                            lineHeight: '19px'
+                        })
+                        .add(Block('text', 1)
+                            .css('cursor', 'default')
+                            .data('This is a brief description or summary of the game.')
+                        )
+                    )
+                    .add(Block('div', 'controls')
+                        .css({
+                            fontSize: '12px',
+                            fontWeight: '100',
+                            color: '#555',
+                            display: 'none',
+                            cursor: 'default',
+                            lineHeight: '15px'
+                        })
+                        .add(Block('text', 1)
+                            .html('<i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</i>')
+                        )
+                    )
+                    .add(Block('div', 'alt-links')
+                        .css({
+                            fontSize: '13px',
+                            fontWeight: '100',
+                            color: '#444',
+                            display: 'none',
+                            // fontStyle: 'italic',
+                            marginTop: '4px'
+                        })
+                        .add(Block('text', 1)
+                            .css('cursor', 'default')
+                            .html('<a href="http://alt1.game.link.com" target="_blank">http://alt1.game.link.com</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="http://alt2.game.link.com" target="_blank">http://alt2.game.link.com</a>')
+                        )
+                    )
+                )
+                .add(Block('div', 'year')
+                    .css({
+                        position: 'absolute',
+                        top: '7px',
+                        //bottom: '-2px',
+                        right: '17px',
+                        height: '30px',
+                        width: 'auto'
+                    })
+                    .add(Block('text', 1)
+                        .data('0000')
+                        .css({
+                            fontSize: '13px',
+                            color: '#222',
+                            opacity: '0.7',
+                            fontWeight: '200'
+                        })
+                    )
+                )
+            ;
+            block.key('$info', block.child('info').$());
+            return block;
+        }
+    load
+        {
+            data('name', name => {
+                if (name && name != '') {
+                    block.child('info/title/text').html('').data(name);
+                    if (name == 'rubbr') {
+                        block.child('info').css('padding-top', '22px');
+                    }
+                }
+            });
+            data('link', link => {
+                if (link && link != '') {
+                    var link_t = '';
+                    var link_data = util.correct_link(link, block);
+                    link = link_data[0];
+                    link_t = link_data[1];
+                    block.child('preview/a').data({ href: link });
+                    block.child('info/title/txt_dash').css('display', 'inline-block');
+                    block.child('info/link')
+                        .css('display', 'inline-block')
+                        .child('a')
+                            .data({ href: link })
+                            .child('text').html(`${link_t}`);
+                }
+            });
+            data('desc', desc => {
+                if (desc && desc != '') {
+                    block.child('info/desc').css('display', 'block').child('text').html('').data(desc);
+                }
+            });
+            data('alt-links', alt_links => {
+                if (alt_links && alt_links != '') {
+                    var links = alt_links.split(' ');
+                    var html = '';
+                    for (var a in links) {
+                        var link_data = util.correct_link(links[a], block);
+                        var link = link_data[0];
+                        var link_t = link_data[1];
+                        html += '<a href="' + link + '" ' + (link.substring(0, 11) == 'javascript:' ? '' : 'target="_blank"') + '>' + link_t + '</a>';
+                        if (a < links.length - 1) {
+                            html += '&nbsp;&nbsp;–&nbsp;&nbsp;';
+                        }
+                    }
+                    block.child('info/alt-links').css('display', 'inline-block').child('text').html('').html('' + html);
+                }
+            });
+            data('controls', controls => {
+                if (controls && controls != '') {
+                    block.child('info/controls').css('display', 'block').child('text').html('').html('<i>' + controls + '</i>');
+                }
+            });
+            data('img', img => {
+                if (img && img != '') {
+                    block.child('preview/a/image').data({
+                        src: `img/games/${img}`
+                    }).css({
+                        backgroundSize: 'cover'
+                    });
+                }
+            });
+            data('preview-pos', preview_pos => {
+                if (preview_pos && preview_pos != '') {
+                    block.child('preview/a/image').css('background-position', '');
+                }
+            });
+            data('controls-lh', controls_lh => {
+                if (controls_lh && controls_lh != '') {
+                    block.child('info/controls').css('line-height', controls_lh);
+                }
+            });
+            data('year', year => {
+                if (year != null && parseInt(year) > 2000) {
+                    year = parseInt(year);
+                    block.child('year/text').html('').data(`${year}`);
+                }
+            });
+        }
+
+!game-section
+    init
+        {
+            var block = Block('div');
+            block
+                .css({
+                    height: 'auto',
+                    minHeight: '150px',
+                    width: '100%',
+                    backgroundColor: 'white',
+                    boxSizing: 'border-box',
+                    marginBottom: '40px',
+                    borderRadius: '8px',
+                    boxShadow: '1px 2px 5px 2px rgba(0,0,0,0.25)',
+                    '-moz-box-shadow': '1px 2px 5px 2px rgba(0,0,0,0.25)',
+                    '-webkit-box-shadow': '1px 2px 5px 2px rgba(0,0,0,0.25)'
+                })
+                .query('window width < 853', function (event, block, data) {
+                    block.css('border-radius', '0');
+                })
+                .query('window width > 853', function (event, block, data) {
+                    block.css('border-radius', '5px');
+                })
+                .query('window width > 1000', function (event, block, data) {
+                    block.css('border-radius', '8px');
+                })
+                .__add(Block('div', 'title')
+                    .css({
+                        height: '44px',
+                        padding: '8px 0 12px 18px',
+                        textAlign: 'left',
+                        boxSizing: 'border-box'
+                    })
+                    .__add(Block('text', 1)
+                        .data('Section Title')
+                        .class('noselect')
+                        .css({
+                            fontSize: '20px',
+                            textTransform: 'uppercase',
+                            letterSpacing: '1.5px',
+                            color: '#2e1760',
+                            fontWeight: '600',
+                            opacity: '0.9',
+                            cursor: 'default'
+                        })
+                    )
+                )
+                .__add(Block('div', 'content'))
+            ;
+            block.setAdd(block.__child('content'));
+            return block;
+        }
+    load
+        {
+            data('title', title => {
+                block.__child('title/text').html('').data((`${title}`).trim());
+            });
+        }
